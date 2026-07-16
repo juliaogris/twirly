@@ -156,6 +156,7 @@ let lastStl = null;
 
 function scheduleRender() {
     updateUrl();
+    syncActivePreset();
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(startRender, 150);
 }
@@ -328,13 +329,30 @@ document.getElementById("canvas").addEventListener("pointerdown", () => {
 
 // Preset links navigate with a new query string, which reloads the page
 // with those parameters applied.
+const presetLinks = [];
+
 function buildPresets() {
     const nav = document.getElementById("presets");
     for (const preset of PRESETS) {
         const link = document.createElement("a");
         link.href = `?${preset.query}`;
         link.textContent = preset.name;
+        const presetValues = defaults();
+        for (const [name, value] of new URLSearchParams(preset.query)) {
+            presetValues[name] = Number(value);
+        }
+        presetLinks.push({ link, values: presetValues });
         nav.append(link);
+    }
+}
+
+// Highlight the preset that matches the current parameters exactly; as
+// soon as any slider deviates, no chip is highlighted.
+function syncActivePreset() {
+    for (const { link, values: preset } of presetLinks) {
+        const match = Object.keys(values)
+            .every((name) => values[name] === preset[name]);
+        link.classList.toggle("active", match);
     }
 }
 
@@ -342,6 +360,7 @@ applyUrlParams();
 buildPresets();
 buildControls();
 syncTopControls();
+syncActivePreset();
 try {
     viewer = initViewer();
 } catch (err) {
