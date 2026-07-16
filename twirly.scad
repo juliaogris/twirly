@@ -104,7 +104,9 @@ module shape() {
                 : [idx(layer, i), idx(layer + 1, i + 1), idx(layer + 1, i)]
     ];
 
-    bottom = [for (i = [0 : segments - 1]) i];
+    // The bottom cap is viewed from below, so its vertices must run in
+    // the opposite direction to the top cap for its normal to face out.
+    bottom = [for (i = [segments - 1 : -1 : 0]) i];
     top    = [for (i = [idx(layers, 0) : idx(layers, segments - 1)]) i];
 
     polyhedron(points = points, faces = concat([bottom], [top], side));
