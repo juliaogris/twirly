@@ -59,8 +59,13 @@ export const PRESETS = [
     { name: "candy bowl", query: "pointiness=0&height=60" },
     { name: "vase", query: "pointiness=0&is_vase=1&height=120" },
     { name: "ice-cream twirl", query: "height=110&profile_depth=0.3&rib_count=7&rib_depth=0.1&twist=300&twist_part=0&roundness=2.5&pointiness=3" },
-    { name: "garlic bulb", query: "height=70&base_diameter=110&profile_depth=0.4&rib_count=6&rib_depth=0.15&twist=30&roundness=2&pointiness=5" },
+    { name: "garlic bulb", query: "height=70&base_diameter=110&profile_depth=0.4&rib_count=13&twist=0&roundness=2&pointiness=5" },
     { name: "bishop's hat", query: "height=140&profile_depth=0.5&rib_count=4&rib_depth=0.08&twist=45&roundness=1.5&pointiness=6" },
+    { name: "pumpkin", query: "height=65&base_diameter=125&profile_depth=0.35&rib_count=9&rib_depth=0.14&twist=0&roundness=2.5&pointiness=1.5" },
+    { name: "water drop", query: "height=130&profile_depth=0.25&rib_count=0&rib_depth=0&twist=0&roundness=1.5&pointiness=4" },
+    { name: "onion dome", query: "height=120&profile_depth=0.6&rib_count=0&rib_depth=0&twist=0&roundness=2.5&pointiness=8" },
+    { name: "beehive", query: "height=80&profile_depth=0.3&rib_count=0&rib_depth=0&twist=0&roundness=2&pointiness=1" },
+    { name: "cupcake swirl", query: "height=100&profile_depth=0.35&rib_count=6&rib_depth=0.12&twist=360&twist_part=0&roundness=2.5&pointiness=3" },
 ];
 
 export function defaults() {
